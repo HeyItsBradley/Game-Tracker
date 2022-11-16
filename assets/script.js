@@ -23,13 +23,11 @@ $(document).ready(function () {
           console.log("second loop is runninog");
           if (i === 0) {
             let makeDiv = document.createElement("div");
-
             let makeImg = document.createElement("img");
             let makeInnerDiv = document.createElement("div");
             let makeCaption = document.createElement("h2");
 
             makeDiv.setAttribute("role", "listbox");
-            // makeDiv.style = "width:50%;!important;";
             makeDiv.className = "carousel-item active";
             makeImg.setAttribute("src", charArr[i].fullPortrait);
             makeImg.className = "d-block w-100";
@@ -44,14 +42,13 @@ $(document).ready(function () {
             makeInnerDiv.appendChild(makeCaption);
             i++;
           }
-          let makeDiv = document.createElement("div");
 
+          let makeDiv = document.createElement("div");
           let makeImg = document.createElement("img");
           let makeInnerDiv = document.createElement("div");
           let makeCaption = document.createElement("h2");
 
           makeDiv.setAttribute("role", "listbox");
-          // makeDiv.style = "width:50%; !important;";
           makeDiv.className = "carousel-item";
           makeImg.setAttribute("src", charArr[i].fullPortrait);
           makeImg.className = "d-block w-100";
@@ -64,7 +61,18 @@ $(document).ready(function () {
           makeDiv.appendChild(makeInnerDiv);
           makeInnerDiv.appendChild(makeCaption);
         }
-        let activeChar = $(".active");
+        for (let i = 0; i < charArr.length; i++) {
+          let makeDiv = document.createElement("div");
+          let makePic = document.createElement("img");
+
+          makeDiv.className = "";
+          makePic.setAttribute("src", charArr[i].displayIconSmall);
+          makePic.className = "m-3";
+          makePic.style = "max-height:7vw";
+
+          document.getElementById("charSection").appendChild(makePic);
+          // makeDiv.appendChild(makePic);
+        }
       });
   }
 
