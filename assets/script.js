@@ -1,6 +1,7 @@
 //Variables
 let api = "https://valorant-api.com/v1/agents";
 let apiData = "";
+let agentApi = "https://valorant-api.com/v1/agents/";
 
 //functions
 $(document).ready(function () {
@@ -30,16 +31,20 @@ $(document).ready(function () {
             makeDiv.setAttribute("role", "listbox");
             makeDiv.className = "carousel-item active";
             makeImg.setAttribute("src", charArr[i].fullPortrait);
-            makeImg.className = "d-block w-100";
+            makeImg.setAttribute("fullImg", charArr[i].fullPortrait);
+            makeImg.setAttribute("uuid", charArr[i].uuid);
+            makeImg.className = "d-block w-100 ";
             makeImg.style = "box-shadow:100px black;";
             makeInnerDiv.className = "carousel-caption d-none d-md-block";
             makeCaption.textContent = charArr[i].displayName;
+            makeImg.id = "img";
 
             document.getElementById("innerC").appendChild(makeDiv);
 
             makeDiv.appendChild(makeImg);
             makeDiv.appendChild(makeInnerDiv);
             makeInnerDiv.appendChild(makeCaption);
+
             i++;
           }
 
@@ -54,6 +59,9 @@ $(document).ready(function () {
           makeImg.className = "d-block w-100";
           makeInnerDiv.className = "carousel-caption d-none d-md-block";
           makeCaption.textContent = charArr[i].displayName;
+          makeImg.setAttribute("fullImg", charArr[i].fullPortrait);
+          makeImg.setAttribute("uuid", charArr[i].uuid);
+          makeImg.id = "img";
 
           document.getElementById("innerC").appendChild(makeDiv);
 
@@ -67,8 +75,11 @@ $(document).ready(function () {
 
           makeDiv.className = "";
           makePic.setAttribute("src", charArr[i].displayIconSmall);
-          makePic.className = "m-3";
+          makePic.setAttribute("fullImg", charArr[i].fullPortrait);
+          makePic.setAttribute("uuid", charArr[i].uuid);
+          makePic.className = "m-3  p-2";
           makePic.style = "max-height:7vw";
+          makePic.id = "img";
 
           document.getElementById("charSection").appendChild(makePic);
           // makeDiv.appendChild(makePic);
@@ -79,3 +90,33 @@ $(document).ready(function () {
   getApi();
 });
 //event listeners
+//on click of image
+//create a div
+//withing div, append img, background
+//create and append paragraph underneath with char description
+//create div with abilities imgs
+//maybe on hover of abilities, display a pop up text with description
+let makeDiv = document.createElement("div");
+let makeImg = document.createElement("img");
+
+document.getElementById("appendImg").appendChild(makeDiv);
+makeDiv.appendChild(makeImg);
+
+$(document).on("click", "#img", function () {
+  const img = this;
+  let getUuid = img.getAttribute("uuid");
+
+  fetch(agentApi + getUuid)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      let background = data.data.background;
+
+      makeDiv.className = "d-flex justify-content-center";
+      makeImg.setAttribute("src", data.data.fullPortrait);
+      makeImg.style = "width: 50vw";
+      makeImg.style.background = "url(" + background + ") no-repeat center";
+    });
+});
