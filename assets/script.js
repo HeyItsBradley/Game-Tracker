@@ -98,8 +98,10 @@ $(document).ready(function () {
 //maybe on hover of abilities, display a pop up text with description
 let makeDiv = document.createElement("div");
 let makeImg = document.createElement("img");
+let makeP = document.createElement("p");
 
 document.getElementById("appendImg").appendChild(makeDiv);
+document.getElementById("appendImg").appendChild(makeP);
 makeDiv.appendChild(makeImg);
 
 $(document).on("click", "#img", function () {
@@ -118,5 +120,7 @@ $(document).on("click", "#img", function () {
       makeImg.setAttribute("src", data.data.fullPortrait);
       makeImg.style = "width: 50vw";
       makeImg.style.background = "url(" + background + ") no-repeat center";
+      makeP.textContent = data.data.description;
+      makeP.className = "text-center text-light fs-2 m-3 col-8";
     });
 });
