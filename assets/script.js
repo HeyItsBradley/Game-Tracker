@@ -27,18 +27,21 @@ $(document).ready(function () {
             let makeImg = document.createElement("img");
             let makeInnerDiv = document.createElement("div");
             let makeCaption = document.createElement("h2");
+            let background = data.data[i].background;
 
             makeDiv.setAttribute("role", "listbox");
             makeDiv.className = "carousel-item active";
             makeImg.setAttribute("src", charArr[i].fullPortrait);
             makeImg.setAttribute("fullImg", charArr[i].fullPortrait);
             makeImg.setAttribute("uuid", charArr[i].uuid);
+
             makeImg.className = "d-block w-100 ";
             makeImg.style = "box-shadow:100px black;";
             makeInnerDiv.className = "carousel-caption d-none d-md-block";
-            makeCaption.textContent = charArr[i].displayName;
-            makeImg.id = "img";
 
+            makeImg.id = "img";
+            makeImg.style.background =
+              "url(" + background + ") no-repeat center";
             document.getElementById("innerC").appendChild(makeDiv);
 
             makeDiv.appendChild(makeImg);
@@ -52,15 +55,17 @@ $(document).ready(function () {
           let makeImg = document.createElement("img");
           let makeInnerDiv = document.createElement("div");
           let makeCaption = document.createElement("h2");
+          let background = data.data[i].background;
 
           makeDiv.setAttribute("role", "listbox");
           makeDiv.className = "carousel-item";
           makeImg.setAttribute("src", charArr[i].fullPortrait);
           makeImg.className = "d-block w-100";
           makeInnerDiv.className = "carousel-caption d-none d-md-block";
-          makeCaption.textContent = charArr[i].displayName;
+
           makeImg.setAttribute("fullImg", charArr[i].fullPortrait);
           makeImg.setAttribute("uuid", charArr[i].uuid);
+          makeImg.style.background = "url(" + background + ") no-repeat center";
           makeImg.id = "img";
 
           document.getElementById("innerC").appendChild(makeDiv);
