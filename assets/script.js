@@ -21,36 +21,6 @@ $(document).ready(function () {
         console.log(charArr);
 
         for (let i = 0; i < charArr.length; i++) {
-          console.log("second loop is runninog");
-          if (i === 0) {
-            let makeDiv = document.createElement("div");
-            let makeImg = document.createElement("img");
-            let makeInnerDiv = document.createElement("div");
-            let makeCaption = document.createElement("h2");
-            let background = data.data[i].background;
-
-            makeDiv.setAttribute("role", "listbox");
-            makeDiv.className = "carousel-item active";
-            makeImg.setAttribute("src", charArr[i].fullPortrait);
-            makeImg.setAttribute("fullImg", charArr[i].fullPortrait);
-            makeImg.setAttribute("uuid", charArr[i].uuid);
-
-            makeImg.className = "d-block w-100 ";
-            makeImg.style = "box-shadow:100px black;";
-            makeInnerDiv.className = "carousel-caption d-none d-md-block";
-
-            makeImg.id = "img";
-            makeImg.style.background =
-              "url(" + background + ") no-repeat center";
-            document.getElementById("innerC").appendChild(makeDiv);
-
-            makeDiv.appendChild(makeImg);
-            makeDiv.appendChild(makeInnerDiv);
-            makeInnerDiv.appendChild(makeCaption);
-
-            i++;
-          }
-
           let makeDiv = document.createElement("div");
           let makeImg = document.createElement("img");
           let makeInnerDiv = document.createElement("div");
@@ -65,7 +35,8 @@ $(document).ready(function () {
 
           makeImg.setAttribute("fullImg", charArr[i].fullPortrait);
           makeImg.setAttribute("uuid", charArr[i].uuid);
-          makeImg.style.background = "url(" + background + ") no-repeat center";
+          makeImg.style.background =
+            "url(" + data.data[i].background + ") no-repeat center";
           makeImg.id = "img";
 
           document.getElementById("innerC").appendChild(makeDiv);
@@ -73,6 +44,8 @@ $(document).ready(function () {
           makeDiv.appendChild(makeImg);
           makeDiv.appendChild(makeInnerDiv);
           makeInnerDiv.appendChild(makeCaption);
+
+          $("#innerC").children().eq(0).attr("class", " carousel-item active");
         }
         for (let i = 0; i < charArr.length; i++) {
           let makeDiv = document.createElement("div");
@@ -94,13 +67,7 @@ $(document).ready(function () {
 
   getApi();
 });
-//event listeners
-//on click of image
-//create a div
-//withing div, append img, background
-//create and append paragraph underneath with char description
-//create div with abilities imgs
-//maybe on hover of abilities, display a pop up text with description
+
 let makeDiv = document.createElement("div");
 let makeImg = document.createElement("img");
 let makeP = document.createElement("p");
