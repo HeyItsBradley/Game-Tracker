@@ -25,7 +25,7 @@ $(document).ready(function () {
           let makeImg = document.createElement("img");
           let makeInnerDiv = document.createElement("div");
           let makeCaption = document.createElement("h2");
-          let background = data.data[i].background;
+          let background = charArr[i].background;
 
           makeDiv.setAttribute("role", "listbox");
           makeDiv.className = "carousel-item";
@@ -35,8 +35,7 @@ $(document).ready(function () {
 
           makeImg.setAttribute("fullImg", charArr[i].fullPortrait);
           makeImg.setAttribute("uuid", charArr[i].uuid);
-          makeImg.style.background =
-            "url(" + data.data[i].background + ") no-repeat center";
+          makeImg.style.background = "url(" + background + ") no-repeat center";
           makeImg.id = "img";
 
           document.getElementById("innerC").appendChild(makeDiv);
