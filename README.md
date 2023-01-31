@@ -1,7 +1,5 @@
-
-  
 # Valorant Agents
-    
+
 [![License:other](https://img.shields.io/badge/License-other-blue.svg)](https://opensource.org/licenses/other)
 
 ## Description
@@ -19,15 +17,16 @@ A hub for viewing all of the Valorant agents and their description.
 To install necessary depenencies, run the follwing command:
 
 ```md
-Clone repo 
+Clone repo
 ```
+
+![alt](/assets/readMePic.png)
 
 ## Usage
 
+https://heyitsbradley.github.io/Valorant-Agents/
+
 To use, navigate the page by clicking on the character icons, which will then display a larger card with their description at the bottom of the page.
-
-
-
 
 ## How to Contribute
 
